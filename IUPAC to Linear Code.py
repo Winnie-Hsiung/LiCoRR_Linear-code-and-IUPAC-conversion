@@ -3,8 +3,8 @@
 import pandas as pd
 
 # Load the CSV file
-input_file = "/Users/Your file path.csv"  # Replace with the file path for your input file
-output_file = "/Users/Your file path_modified.csv"    # Replace with the file path for your output
+input_file = "/Users/Your file path.csv"  # Replace with the file path of your input file
+output_file = "/Users/Your file path_modified.csv"    # Replace with the file path of your output file
 
 df = pd.read_csv(input_file)
 
@@ -15,8 +15,8 @@ df['Glycan_structure'] = df['Glycan_structure'].astype(str).str.replace(r'[()]',
 # Step 2: Replace '[' with '(' and ']' with ')'
 df['Glycan_structure'] = df['Glycan_structure'].str.replace('[', '(', regex=False).str.replace(']', ')', regex=False) # Replace with your column name
 
-# Step 3: Replace '-ol' with '-Sp8'
-df['Glycan_structure'] = df['Glycan_structure'].str.replace('-ol', '', regex=False) # Remove with the '-ol' at the sequence ending if there is any
+# Step 3: Remove '-ol' at the sequence ending if there is any. 
+df['Glycan_structure'] = df['Glycan_structure'].str.replace('-ol', '', regex=False)  # Replace with your column name
 
 # Step 7: Replace "ＸＸＸ" with "OOO"
 df['Glycan_structure'] = df['Glycan_structure'].str.replace('GlcNAc', 'GN', regex=False)
